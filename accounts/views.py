@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -29,3 +29,8 @@ def user_login(request):
 @login_required
 def dashboard(request):
     return render(request, "accounts/dashboard.html", {"section": "dashboard"})
+
+
+def logout_view(request):
+    logout(request)
+    return render(request, "registration/logged_out.html", {})
