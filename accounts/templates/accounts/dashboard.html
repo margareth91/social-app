@@ -6,7 +6,12 @@
 
 {% block content %}
     <h1>Panel główny</h1>
-    <p>Witaj w panelu głównym.</p>
+    {% with total_images_created=request.user.images_created.count %}
+        <p>Witaj w panelu głównym. Dodałeś {{ total_images_created }} obraz{{ total_images_created|pluralize:"ów"}}.</p>
+    {% endwith %}
+    <p>Przeciągnij poniższy przycisk na pasek ulubionych. Zyskasz możliwość dodawania obrazów z innych stron
+        internetowych.</p>
+        <a href="javascript:{% include 'bookmarklet_launcher.js' %}" class="button">Dodaj obraz</a>
     <p>
         Możesz <a href="{% url 'edit' %}">edytować profil</a> lub <a href="{% url 'password_change' %}">
         zmienić hasło.</a>
