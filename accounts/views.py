@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
 from .models import Profile
@@ -87,4 +87,12 @@ def user_list(request):
     users = User.objects.filter(is_active=True)
     return render(
         request, "accounts/user/list.html", {"section": "people", "users": users}
+    )
+
+
+@login_required
+def user_detail(request, username):
+    user = get_object_or_404(User, username=username, is_active=True)
+    return render(
+        request, "accounts/user/detail.html", {"section": "people", "user": user}
     )
