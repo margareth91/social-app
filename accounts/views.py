@@ -6,6 +6,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_POST
 
+from actions.utils import create_action
 from common.decorators import ajax_required
 from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
 from .models import Profile, Contact
@@ -53,6 +54,7 @@ def register(request):
             new_user.save()
             # Utworzenie profilu użytkownika
             profile = Profile.objects.create(user=new_user)
+            create_action(new_user, 'utworzył konto')
             return render(
                 request, "accounts/register_done.html", {"new_user": new_user}
             )
