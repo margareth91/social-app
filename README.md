@@ -6,6 +6,7 @@ Simple web app created with Python and Django.
 * Technologies
 * Setup
 * Status
+* To Do
 * Sources
 
 ## General info
@@ -21,7 +22,11 @@ Then, clone this repo to your desktop, activate virtual env and install all depe
 Once the dependencies are installed, run `py manage.py runserver` to start the web app on your localhost.
 
 ## Status
-App building still in progress.
+App is completed and ready to use, however I plan to expand app functionalities (see next paragraph).
+
+## To Do
+* Creating a ranking of images based on the number of likes received;
+* Adding a field showing the number of views of each image.
 
 ## Sources
 This app is created based on Antonio Melé book "Django 3 By Example: Build powerful and reliable Python web applications from scratch, 3rd edition", based on the latest versions of the technlogies used.
